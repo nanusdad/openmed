@@ -1,0 +1,275 @@
+:root {
+  color-scheme: light;
+  --ink: #1d2421;
+  --muted: #5c675f;
+  --paper: #f3efe4;
+  --panel: #fffaf2;
+  --line: #d9d0c0;
+  --pine: #1f4f46;
+  --pine-deep: #14352f;
+  --clay: #8c3d2f;
+  --chip: #e7f0ec;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(31, 79, 70, 0.08), transparent 32%),
+    var(--paper);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 20px 48px;
+}
+
+.mast {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--pine);
+}
+
+h1,
+h2,
+h3 {
+  font-family: Palatino, "Iowan Old Style", Georgia, serif;
+  font-weight: 600;
+}
+
+h1 {
+  margin: 4px 0 0;
+  font-size: 2.1rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.status {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--pine-deep);
+  color: #f6f3ea;
+  white-space: nowrap;
+}
+
+.disclaimer {
+  margin: 18px 0;
+  padding: 12px 14px;
+  border-left: 4px solid var(--clay);
+  background: #fff;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.panel,
+.models,
+.picker {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.panel {
+  padding: 16px;
+}
+
+.samples {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip,
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: var(--pine);
+  color: white;
+  cursor: pointer;
+}
+
+button.secondary,
+.chip {
+  background: var(--chip);
+  color: var(--pine-deep);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.field-label,
+.method,
+.picker label {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+textarea,
+select,
+input,
+.passage,
+.redacted {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  color: var(--ink);
+}
+
+textarea {
+  min-height: 180px;
+  margin-top: 6px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.hint,
+.meta,
+.empty {
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: end;
+  margin-top: 12px;
+}
+
+.method select,
+.picker select,
+.picker input {
+  display: block;
+  margin-top: 6px;
+  padding: 8px 10px;
+}
+
+.result-head,
+.models-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.passage {
+  min-height: 140px;
+  margin-top: 12px;
+  padding: 12px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+mark {
+  padding: 0 2px;
+  border-radius: 4px;
+  background: hsl(var(--hue) 62% 84%);
+  box-shadow: inset 0 -2px 0 hsl(var(--hue) 45% 36%);
+}
+
+.tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: hsl(var(--hue) 35% 28%);
+  color: white;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  vertical-align: super;
+}
+
+.redacted {
+  margin-top: 12px;
+  padding: 12px;
+  white-space: pre-wrap;
+  font-family: "IBM Plex Mono", "Source Code Pro", ui-monospace, monospace;
+}
+
+table {
+  width: 100%;
+  margin-top: 12px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.error {
+  color: var(--clay);
+}
+
+.models {
+  margin-top: 16px;
+  padding: 16px;
+}
+
+.model-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.picker {
+  padding: 12px;
+}
+
+@media (max-width: 860px) {
+  .mast,
+  .layout,
+  .model-grid {
+    display: block;
+  }
+
+  .status {
+    display: inline-block;
+    margin-top: 12px;
+    white-space: normal;
+  }
+
+  .panel + .panel,
+  .picker + .picker {
+    margin-top: 12px;
+  }
+}
