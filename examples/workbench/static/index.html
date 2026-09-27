@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenMed chart bench</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Literata:opsz,wght@7..72,460;7..72,650&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="mast">
+    <p class="brand">OpenMed</p>
+    <h1>Chart bench</h1>
+    <p class="lede">Pick a scenario, keep or edit the note, then mark what the model finds.</p>
+  </header>
+
+  <div class="layout">
+    <nav class="scenarios" aria-label="Scenarios">
+      <p class="rail-label">Scenario</p>
+      <div id="scenario-list"></div>
+    </nav>
+
+    <main>
+      <form id="bench" class="bench">
+        <div class="controls">
+          <label class="field">
+            <span>Model</span>
+            <select id="model" name="model"></select>
+          </label>
+          <label class="field threshold">
+            <span>Keep scores at or above <output id="threshold-value" for="threshold">0.50</output></span>
+            <input id="threshold" name="threshold" type="range" min="0" max="1" step="0.05" value="0.5">
+          </label>
+          <button id="run" type="submit">Mark note</button>
+        </div>
+        <p id="model-note" class="model-note"></p>
+        <label class="note-label" for="note">Clinical note</label>
+        <textarea id="note" name="note" rows="7" spellcheck="false"></textarea>
+      </form>
+
+      <p id="status" class="status" role="status"></p>
+      <p id="error" class="error" hidden></p>
+
+      <section id="redacted-wrap" class="sheet-block" hidden>
+        <h2>Redacted note</h2>
+        <div id="redacted" class="sheet sheet-plain"></div>
+      </section>
+
+      <section class="sheet-block">
+        <div class="sheet-head">
+          <h2>Marked note</h2>
+          <p id="timing" class="timing"></p>
+        </div>
+        <div id="marked" class="sheet">Mark a note to see entities written back onto the text.</div>
+      </section>
+
+      <section class="ledger-block">
+        <h2>Entities</h2>
+        <div id="ledger-empty" class="empty">Nothing marked yet.</div>
+        <table id="ledger" hidden>
+          <thead>
+            <tr>
+              <th>Label</th>
+              <th>Text</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
